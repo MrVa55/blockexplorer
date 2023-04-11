@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Alchemy, Network } from 'alchemy-sdk';
 import BlockInfo from './BlockInfo';
 import NewBlock from './NewBlock';
-import { Box, Flex } from '@chakra-ui/react';
+
+import { Box, Flex} from '@chakra-ui/react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { ScaleFade } from '@chakra-ui/react';
 
-const BlockChain = ({alchemy}) => {
+
+const BlockChain = ({alchemy, setDisplayBlockNumber, setDisplayType}) => {
 const [blockNumber, setBlockNumber] = useState();
 const [blocks, setBlocks] = useState([]);
  
@@ -84,7 +85,6 @@ const transitionDuration = 300;
       alignItems="center"
       justifyContent="flex-start"
       width="100%"
-      minHeight="100vh"
       pt="4"
     >
       <Box
@@ -94,10 +94,9 @@ const transitionDuration = 300;
         py="4"
         px="2"
         width="100%"
-        maxWidth="1200px" // You can adjust this value to control the maximum width of the slider
         boxShadow="lg"
         borderRadius="lg"
-        backgroundColor="rgba(55, 123, 172, 0.6)"
+        backgroundColor="rgba(55, 123, 172, 0.2)"
       >
         <Box mr="4">
           <NewBlock
@@ -113,7 +112,7 @@ const transitionDuration = 300;
             <CSSTransition key={block.hash} timeout={transitionDuration} classNames="block">
               <Box mr="4">
                 <ScaleFade initialScale={0.9} in>
-                  <BlockInfo block={block} />
+                  <BlockInfo block={block} setDisplayBlockNumber={setDisplayBlockNumber} setDisplayType={setDisplayType}/>
                 </ScaleFade>
               </Box>
             </CSSTransition>

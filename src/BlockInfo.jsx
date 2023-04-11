@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, Card } from '@chakra-ui/react';
-
-const BlockInfo = ({ block }) => {
+import { Text, Card, Button } from '@chakra-ui/react';
+const BlockInfo = ({ block, setDisplayBlockNumber, setDisplayType }) => {
 
     if (!block) {
         return null;
@@ -14,9 +13,9 @@ const BlockInfo = ({ block }) => {
     timestamp,
    // nonce,
   //  difficulty,
-    gasLimit,
+  //  gasLimit,
     gasUsed,
-    miner,
+ //   miner,
  //   extraData,
     transactions,
     baseFeePerGas,
@@ -31,7 +30,7 @@ const BlockInfo = ({ block }) => {
       p="6"
       overflow="hidden"
       bg="white"
-      width="200px"
+      width="300px"
       backgroundColor="rgba(55, 123, 172, 0.6)"
      
     >
@@ -60,8 +59,14 @@ const BlockInfo = ({ block }) => {
      <Text>
         <strong>Transactions in block:</strong> {transactions.length}
       </Text>
+      <Button onClick={() => {
+        setDisplayBlockNumber(number);
+        setDisplayType("displayBlock");
+        }}> See transactions </Button>
     </Card>
-  );
+
+);
+  
 };
 
 export default BlockInfo;

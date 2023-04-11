@@ -40,7 +40,7 @@ const NewBlock = ({ alchemy, blockNumber, setBlockNumber, blocks, setBlocks }) =
       p="6"
       overflow="hidden"
       bg="white"
-      width="200px"
+      width="300px"
       height="100%"
       backgroundColor="rgba(55, 123, 172, 0.6)"
     >
