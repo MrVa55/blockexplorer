@@ -1,13 +1,16 @@
 import React from 'react';
 import  { useState, useEffect } from 'react';
-import { Text, Card, Button } from '@chakra-ui/react';
+import { Text, Card, Button, Link } from '@chakra-ui/react';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
+import {Utils} from "alchemy-sdk";
 
 const truncateAddress = (address) => {
+    if (!address) return '';
+  
     return address.slice(0, 6) + '...' + address.slice(-4);
   };
 
-const BlockWithTransactions = ({ alchemy, displayBlockNumber, setDisplayType, setDisplayTransactionHash }) => {
+const BlockWithTransactions = ({ alchemy, displayBlockNumber, setDisplayType, setDisplayTransactionHash, setDisplayAddress }) => {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
@@ -56,9 +59,23 @@ const BlockWithTransactions = ({ alchemy, displayBlockNumber, setDisplayType, se
             <Tbody>
               {transactions.map((transaction) => (
                 <Tr key={transaction.hash}>
-                   <Td>{truncateAddress(transaction.from)}</Td>
-                   <Td>{truncateAddress(transaction.to)}</Td>
-                   <Td>{transaction.value.toString() / 10e18}</Td>
+                   <Td>
+                        <Link onClick={() => {
+                            setDisplayAddress(transaction.from);
+                            setDisplayType("displayAddress");
+                             }}>
+                            {truncateAddress(transaction.from)}
+                        </Link>
+                    </Td>
+                    <Td>
+                        <Link onClick={() => {
+                            setDisplayAddress(transaction.to);
+                            setDisplayType("displayAddress");
+                             }}>
+                            {truncateAddress(transaction.to)}
+                        </Link>
+                    </Td>
+                    <Td>{parseFloat(parseFloat(Utils.formatEther(transaction.value)).toFixed(4))}</Td>
                    <Td> <Button textColor="black" onClick={() => {
                             setDisplayTransactionHash(transaction.hash);
                             setDisplayType("displayTransaction");

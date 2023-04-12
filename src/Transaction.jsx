@@ -1,9 +1,9 @@
 import React from 'react';
 import  { useState, useEffect } from 'react';
-import { Text, Card } from '@chakra-ui/react';
+import { Text, Card, Link } from '@chakra-ui/react';
 
 
-const Transaction = ({ alchemy, displayTransactionHash }) => {
+const Transaction = ({ alchemy, displayTransactionHash, setDisplayBlockNumber, setDisplayAddress, setDisplayType }) => {
     const [transactionData, setTransactionData] = useState();
 
     useEffect(() => {
@@ -37,16 +37,34 @@ const Transaction = ({ alchemy, displayTransactionHash }) => {
             backgroundColor="rgba(55, 123, 172, 0.6)"
           >
             <Text fontWeight="bold" fontSize="xl" mb="4">
-              Transaction #{transactionData.transactionIndex + 1} in block #{transactionData.blockNumber}
+              Transaction #{transactionData.transactionIndex + 1} in  
+              <Link onClick={() => {
+                            setDisplayBlockNumber(transactionData.blockNumber);
+                            setDisplayType("displayBlock");
+                             }}>
+                         
+                        block #{transactionData.blockNumber}</Link>
             </Text>
+            
             <Text>
               Transaction Hash: {transactionData.transactionHash}
             </Text>
             <Text>
-              To: {transactionData.to}
+              To:  <Link onClick={() => {
+                            setDisplayAddress(transactionData.to);
+                            setDisplayType("displayAddress");
+                             }}>
+                            {transactionData.to}
+                        </Link>
+                     
             </Text>
             <Text>
-              From: {transactionData.from}
+              From: <Link onClick={() => {
+                            setDisplayAddress(transactionData.from);
+                            setDisplayType("displayAddress");
+                             }}>
+                            {transactionData.from}
+                        </Link>
             </Text>
             <Text>Confirmations: {transactionData.confirmations}</Text>
             <Text>
