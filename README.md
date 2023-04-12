@@ -1,1 +1,1 @@
-#This is a week 3 project for Alchemy University. It is a simple block explorer that allows you to see blocks, transactions and addresses on the Ethereum blockchain. A running version can be found at http://blockexplorer.herokuapp.com
+#This is a week 3 project for Alchemy University. It is a simple block explorer that allows you to see blocks, transactions and addresses on the Ethereum blockchain. A running version can be found at [http://blockexplorer.herokuapp.com](https://main--tiny-vacherin-7d4c3e.netlify.app/)
