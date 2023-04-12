@@ -24,7 +24,7 @@ const BlockWithTransactions = ({ alchemy, displayBlockNumber, setDisplayType, se
         }
      
         getTransactions();
-        console.log(transactions)
+        
       }, [displayBlockNumber]);
     
 

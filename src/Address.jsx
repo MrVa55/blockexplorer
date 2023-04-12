@@ -2,7 +2,6 @@ import React from 'react';
 import  { useState, useEffect } from 'react';
 import { Text, Card, Link, Button } from '@chakra-ui/react';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
-import {Utils} from "alchemy-sdk";
 
 const truncateAddress = (address) => {
     return address.slice(0, 6) + '...' + address.slice(-4);
@@ -32,7 +31,6 @@ const Address = ({ alchemy, displayAddress, setDisplayAddress, setDisplayTransac
         setBalance(loadedBalance.toString());
         setTransfersTo(loadedTransfersTo.transfers);
         setTransfersFrom(loadedTransfersFrom.transfers);
-        console.log(transfersTo);
         }
         
         getBalance();

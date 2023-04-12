@@ -27,7 +27,7 @@ const transitionDuration = 300;
     async function getBlocks() {
       if (!blockNumber) return;
 
-      const numberOfBlocks = 10; // Change this value to fetch more or fewer blocks
+      const numberOfBlocks = 4; // Change this value to fetch more or fewer blocks
       const blockPromises = [];
 
       for (let i = 0; i < numberOfBlocks; i++) {
@@ -43,10 +43,8 @@ const transitionDuration = 300;
   }, [blockNumber]);
 
 
-  
-
   const loadMoreBlocks = async () => {
-    const numberOfBlocks = 10;
+    const numberOfBlocks = 2;
     const blockPromises = [];
 
     for (let i = 0; i < numberOfBlocks; i++) {
@@ -79,6 +77,7 @@ const transitionDuration = 300;
     };
   }, [loadMoreBlocks]);
 
+  
   return (
     <Flex
       flexDirection="column"
